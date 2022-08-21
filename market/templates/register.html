@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register Page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register">
+            <!-- Protecting submitted data from Cross Site Request Forgery (CSRF) attack -->
+            {{ form.hidden_tag() }}
+            
+            <div class="img-container">
+                <img src="/static/img/home-bright.png" class="reg-img" alt="registration form image">
+            </div>
+            <h2 class="head">Create your Account Please</h2>
+            <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control", placeholder="Email Address") }}
+
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control", placeholder="Password") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+            <br>
+            <div class="checkbox mb-3">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}
